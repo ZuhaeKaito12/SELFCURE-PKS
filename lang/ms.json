@@ -638,5 +638,6 @@
     "At least 8 characters, with uppercase and lowercase letters and a number.": "Sekurang-kurangnya 8 aksara, dengan huruf besar, huruf kecil dan nombor.",
     "If an account exists for this email, we have sent a password reset link to it.": "Jika e-mel ini mempunyai akaun, kami telah menghantar pautan untuk menetapkan semula kata laluan ke e-mel tersebut.",
     "We could not send the email right now. Please try again in a few minutes.": "Kami tidak dapat menghantar e-mel buat masa ini. Sila cuba lagi dalam beberapa minit.",
-    "We could not send your code right now. Please wait a minute and choose \"Resend\".": "Kami tidak dapat menghantar kod anda buat masa ini. Sila tunggu seminit, kemudian pilih \"Hantar semula\"."
+    "We could not send your code right now. Please wait a minute and choose \"Resend\".": "Kami tidak dapat menghantar kod anda buat masa ini. Sila tunggu seminit, kemudian pilih \"Hantar semula\".",
+    "Message from Administrator": "Mesej daripada Pentadbir"
 }

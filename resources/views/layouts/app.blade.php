@@ -130,10 +130,25 @@
                                         </form>
                                     </li>
                                     @foreach ($notifications as $notification)
+                                        @php
+                                            // Messages and feedback written by the administrator are labelled
+                                            // so the SME owner can tell them apart from system notices.
+                                            $sender = match ($notification->type) {
+                                                \App\Notifications\AdminMessage::class => __('Message from Administrator'),
+                                                \App\Notifications\AdminNoteAdded::class => __('Feedback from Administrator'),
+                                                default => null,
+                                            };
+                                        @endphp
                                         <li>
                                             <form method="POST" action="{{ route('notifications.read', $notification->id) }}">
                                                 @csrf
                                                 <button type="submit" class="dropdown-item small {{ is_null($notification->read_at) ? 'fw-semibold' : 'text-muted' }}" style="white-space: normal;">
+                                                    @if ($sender)
+                                                        <div class="notification-sender">
+                                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                                            {{ $sender }}
+                                                        </div>
+                                                    @endif
                                                     {{ ($notification->data['is_raw'] ?? false) ? $notification->data['message_key'] : __($notification->data['message_key'] ?? '') }}
                                                     <div class="text-muted" style="font-size: .7rem;">{{ $notification->created_at->diffForHumans() }}</div>
                                                 </button>
