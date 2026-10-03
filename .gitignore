@@ -1,0 +1,42 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
+
+# --- SELFCURE PKS additions ---
+# Any environment file with real values (only the template is committed).
+.env.*
+!.env.example
+
+# Database files and dumps never belong in the repository.
+*.sqlite
+*.sqlite-journal
+*.sql
+*.sql.gz
+
+# Build / deploy artefacts.
+release.zip
+/bootstrap/cache/*.php
+
+# Local tools.
+composer.phar
