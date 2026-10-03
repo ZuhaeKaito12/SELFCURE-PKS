@@ -62,6 +62,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="password" class="form-label">{{ __('Temporary Password') }}</label>
                         <input id="password" name="password" type="password" class="form-control" required>
+                        <div class="form-text">{{ __('At least 8 characters, with uppercase and lowercase letters and a number.') }}</div>
                         @error('password') <div class="text-danger small">{{ $message }}</div> @enderror
                     </div>
                     <div class="col-md-6 mb-3">

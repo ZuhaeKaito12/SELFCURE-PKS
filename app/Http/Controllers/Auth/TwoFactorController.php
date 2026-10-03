@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Throwable;
 
 class TwoFactorController extends Controller
 {
@@ -83,7 +84,13 @@ class TwoFactorController extends Controller
             'two_factor_expires_at' => now()->addMinutes(10),
         ])->save();
 
-        $user->notify(new TwoFactorCode($code));
+        try {
+            $user->notify(new TwoFactorCode($code));
+        } catch (Throwable $e) {
+            report($e);
+
+            return back()->withErrors(['code' => __('We could not send your code right now. Please wait a minute and choose "Resend".')]);
+        }
 
         return back()->with('status', __('A new code has been sent to your email.'));
     }

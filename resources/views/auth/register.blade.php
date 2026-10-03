@@ -62,6 +62,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">{{ __('Password') }}</label>
             <input id="password" type="password" name="password" class="form-control" required autocomplete="new-password">
+            <div class="form-text">{{ __('At least 8 characters, with uppercase and lowercase letters and a number.') }}</div>
         </div>
 
         <div class="mb-3">

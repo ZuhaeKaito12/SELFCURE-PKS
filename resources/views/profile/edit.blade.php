@@ -136,6 +136,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ __('New Password') }}</label>
                             <input id="password" name="password" type="password" class="form-control" autocomplete="new-password">
+                            <div class="form-text">{{ __('At least 8 characters, with uppercase and lowercase letters and a number.') }}</div>
                             @error('password', 'updatePassword') <div class="text-danger small">{{ $message }}</div> @enderror
                         </div>
 

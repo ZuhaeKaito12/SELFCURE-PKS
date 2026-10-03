@@ -633,5 +633,10 @@
 
     "About this report: the results come from the answers the business gave in a self-assessment, not from a technical audit. It is practical guidance for everyday security, not legal advice.": "Tentang laporan ini: keputusan adalah berdasarkan jawapan yang diberikan oleh perniagaan dalam penilaian kendiri, bukan audit teknikal. Laporan ini ialah panduan praktikal untuk keselamatan harian, bukan nasihat undang-undang.",
 
-    "Managed level \u00b7 65%": "Tahap Terurus \u00b7 65%"
+    "Managed level \u00b7 65%": "Tahap Terurus \u00b7 65%",
+    "Reset Password": "Tetapkan Semula Kata Laluan",
+    "At least 8 characters, with uppercase and lowercase letters and a number.": "Sekurang-kurangnya 8 aksara, dengan huruf besar, huruf kecil dan nombor.",
+    "If an account exists for this email, we have sent a password reset link to it.": "Jika e-mel ini mempunyai akaun, kami telah menghantar pautan untuk menetapkan semula kata laluan ke e-mel tersebut.",
+    "We could not send the email right now. Please try again in a few minutes.": "Kami tidak dapat menghantar e-mel buat masa ini. Sila cuba lagi dalam beberapa minit.",
+    "We could not send your code right now. Please wait a minute and choose \"Resend\".": "Kami tidak dapat menghantar kod anda buat masa ini. Sila tunggu seminit, kemudian pilih \"Hantar semula\"."
 }

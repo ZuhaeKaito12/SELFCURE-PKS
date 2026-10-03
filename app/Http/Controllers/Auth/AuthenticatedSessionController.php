@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Throwable;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -46,10 +47,19 @@ class AuthenticatedSessionController extends Controller
                 'two_factor_expires_at' => now()->addMinutes(10),
             ])->save();
 
-            $user->notify(new TwoFactorCode($code));
-
             $request->session()->put('two_factor_user_id', $user->id);
             $request->session()->put('two_factor_remember', $remember);
+
+            try {
+                $user->notify(new TwoFactorCode($code));
+            } catch (Throwable $e) {
+                // Mail server unreachable: keep the user on the code page so
+                // they can use "Resend" once email is working again.
+                report($e);
+
+                return redirect()->route('two-factor.challenge')
+                    ->withErrors(['code' => __('We could not send your code right now. Please wait a minute and choose "Resend".')]);
+            }
 
             return redirect()->route('two-factor.challenge');
         }
