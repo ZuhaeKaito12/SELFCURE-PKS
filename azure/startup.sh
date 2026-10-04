@@ -10,13 +10,19 @@ cd "$APP_DIR" || exit 1
 cp "$APP_DIR/azure/nginx-default.conf" /etc/nginx/sites-available/default
 service nginx reload
 
-# 2. Database: apply migrations, then the production-safe seeder
-#    (reference data + the administrator account; never demo data, and it
-#    never rebuilds questions once they exist). Both are safe on every restart.
-php artisan migrate --force || echo "WARNING: migrations failed - check the DB_* settings."
-php artisan db:seed --force || echo "WARNING: seeding failed - check ADMIN_EMAIL / ADMIN_PASSWORD."
-
-# 3. Production caches (rebuilt on every start so new settings take effect).
+# 2. Cache the configuration first, so the current app settings are used
+#    from the very first request.
 php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+
+# 3. Everything else runs in the background. PHP only starts serving pages
+#    once this script ends, and running these steps one after another used
+#    to keep visitors on a "502 Bad Gateway" page for about 30 seconds after
+#    every cold start. Migrations and the production-safe seeder (reference
+#    data + the administrator account, never demo data, never rebuilds
+#    questions once they exist) are safe on every restart.
+(
+    php artisan migrate --force || echo "WARNING: migrations failed - check the DB_* settings."
+    php artisan db:seed --force || echo "WARNING: seeding failed - check ADMIN_EMAIL / ADMIN_PASSWORD."
+    php artisan route:cache
+    php artisan view:cache
+) &
