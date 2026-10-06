@@ -126,11 +126,17 @@
             <div class="row g-3 mb-3">
                 <div class="col-md-6 js-reveal">
                     <div class="ai-panel ai-panel-good h-100">
-                        <span class="ai-label">✓ {{ __("What You're Doing Well") }}</span>
+                        <span class="ai-label ai-label-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                            {{ __("What You're Doing Well") }}
+                        </span>
                         @if (! empty($insights['strengths']))
-                            <ul class="ai-list mb-0">
+                            <ul class="ai-points mb-0">
                                 @foreach ($insights['strengths'] as $strength)
-                                    <li>{{ $strength }}</li>
+                                    <li>
+                                        <span class="ai-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                                        <span>{{ $strength }}</span>
+                                    </li>
                                 @endforeach
                             </ul>
                         @else
@@ -140,11 +146,17 @@
                 </div>
                 <div class="col-md-6 js-reveal">
                     <div class="ai-panel ai-panel-warn h-100">
-                        <span class="ai-label">⚠ {{ __('Areas That Need Attention') }}</span>
+                        <span class="ai-label ai-label-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                            {{ __('Areas That Need Attention') }}
+                        </span>
                         @if (! empty($insights['improvements']))
-                            <ul class="ai-list mb-0">
+                            <ul class="ai-points mb-0">
                                 @foreach ($insights['improvements'] as $improvement)
-                                    <li>{{ $improvement }}</li>
+                                    <li>
+                                        <span class="ai-point-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+                                        <span>{{ $improvement }}</span>
+                                    </li>
                                 @endforeach
                             </ul>
                         @else

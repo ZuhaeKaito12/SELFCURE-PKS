@@ -913,8 +913,19 @@ a > .card { transition: transform 200ms var(--ease-out), box-shadow 200ms var(--
 .ai-panel-good .ai-label { color: var(--sp-good); }
 .ai-panel-warn { background: var(--sp-warn-soft); }
 .ai-panel-warn .ai-label { color: var(--sp-warn); }
-.ai-list { padding-left: 1.1rem; font-size: .9rem; color: var(--sp-ink-soft); }
-.ai-list li + li { margin-top: .25rem; }
+/* Strengths / areas to improve: one row per item with a small tinted icon tile. */
+.ai-label-icon { display: flex; align-items: center; gap: .4rem; }
+.ai-label-icon svg { width: 14px; height: 14px; flex: none; }
+.ai-points { list-style: none; padding: 0; }
+.ai-points li { display: flex; align-items: center; gap: .65rem; padding: .5rem 0; font-size: .9rem; font-weight: 500; color: var(--sp-ink); }
+.ai-points li + li { border-top: 1px solid rgba(13, 23, 38, .07); }
+.ai-point-icon {
+    flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px;
+    background: var(--sp-surface); box-shadow: inset 0 0 0 1px rgba(13, 23, 38, .08);
+}
+.ai-point-icon svg { width: 13px; height: 13px; }
+.ai-panel-good .ai-point-icon { color: var(--sp-good); }
+.ai-panel-warn .ai-point-icon { color: var(--sp-warn); }
 
 .ai-next {
     background: var(--sp-blue-tint);
