@@ -166,33 +166,6 @@
                 </div>
             </div>
 
-            <div class="ai-next js-reveal">
-                <span class="ai-label">→ {{ __('Recommended Next Step') }}</span>
-                <p class="mb-0">{{ $insights['next_step'] }}</p>
-            </div>
-
-            @if ($recommendations->isNotEmpty())
-                <div class="ai-section js-reveal">
-                    <div class="d-flex justify-content-between align-items-baseline flex-wrap gap-2 mb-2">
-                        <span class="ai-label mb-0">{{ __('Priority Actions') }}</span>
-                        <a href="{{ route('action-plan.index') }}" class="small fw-semibold">{{ __('Open Action Roadmap') }} &rarr;</a>
-                    </div>
-                    <div class="d-grid gap-2">
-                        @foreach ($recommendations->take(3) as $rec)
-                            @php $planItem = $planItems->get($rec['action_id']); @endphp
-                            <a href="{{ route('action-plan.index') }}{{ $planItem ? '#action-'.$planItem->id : '' }}" class="ai-action-link">
-                                <x-domain-icon :code="$rec['domain_code']" :size="18" class="text-primary flex-shrink-0" />
-                                <span class="flex-grow-1">{{ $rec['action_title'] }}</span>
-                                <span class="badge priority-chip priority-{{ $rec['priority'] }}">{{ $rec['priority'] === 'high' ? __('High') : __('Medium') }}</span>
-                                @if ($planItem)
-                                    <x-action-status :status="$planItem->status" />
-                                @endif
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
-
             <div class="ai-explain js-reveal">
                 <button type="button" class="btn btn-outline-primary btn-sm js-explain">{{ __('Explain My Results') }}</button>
                 <div class="ai-explain-panel js-explain-panel" hidden>
@@ -523,7 +496,7 @@
                         [
                             'element' => '#aiAssistant .ai-assistant-head',
                             'title' => __('Your cybersecurity assistant'),
-                            'intro' => e(__('A plain-language summary of your result: what you are doing well, what needs attention, and what to do next.')),
+                            'intro' => e(__('A plain-language summary of your result: what you are doing well and what needs attention.')),
                         ],
                         [
                             'element' => '.js-explain',

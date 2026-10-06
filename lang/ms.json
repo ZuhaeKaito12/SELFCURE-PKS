@@ -639,5 +639,6 @@
     "If an account exists for this email, we have sent a password reset link to it.": "Jika e-mel ini mempunyai akaun, kami telah menghantar pautan untuk menetapkan semula kata laluan ke e-mel tersebut.",
     "We could not send the email right now. Please try again in a few minutes.": "Kami tidak dapat menghantar e-mel buat masa ini. Sila cuba lagi dalam beberapa minit.",
     "We could not send your code right now. Please wait a minute and choose \"Resend\".": "Kami tidak dapat menghantar kod anda buat masa ini. Sila tunggu seminit, kemudian pilih \"Hantar semula\".",
-    "Message from Administrator": "Mesej daripada Pentadbir"
+    "Message from Administrator": "Mesej daripada Pentadbir",
+    "A plain-language summary of your result: what you are doing well and what needs attention.": "Ringkasan keputusan anda dalam bahasa mudah: perkara yang sudah baik dan perkara yang perlu diberi perhatian."
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Assessment;
 use App\Models\AssessmentAnswer;
 use App\Models\Domain;
-use App\Models\ActionPlanItem;
 use App\Services\ActionPlanService;
 use App\Services\AiRecommendationService;
 use App\Services\ComplianceReportService;
@@ -169,15 +168,9 @@ class AssessmentController extends Controller
         $assessment->load(['domainScores.domain', 'user']);
         $recommendations = $reportService->prioritisedRecommendations($assessment);
 
-        $planItems = ActionPlanItem::where('user_id', $assessment->user_id)
-            ->whereIn('security_action_id', $recommendations->pluck('action_id')->filter())
-            ->get()
-            ->keyBy('security_action_id');
-
         return view('assessment.result', [
             'assessment' => $assessment,
             'recommendations' => $recommendations,
-            'planItems' => $planItems,
             'insights' => $aiRecommendations->insightsFor($assessment),
             'riskLevel' => $scoring->riskLevelForPercentage((float) $assessment->overall_score),
             'scoring' => $scoring,
